@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "130480101429",
+    "firebase_url": "https://indoormap-ae301.firebaseio.com",
+    "project_id": "indoormap-ae301",
+    "storage_bucket": "indoormap-ae301.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130480101429:android:71bc9eff311db3e7",
+        "android_client_info": {
+          "package_name": "com.mignot.kumar.indoormap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "130480101429-ecbf4s4kbrhp3bipa4srrl40n30gtqtk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mignot.kumar.indoormap",
+            "certificate_hash": "D5451D1ADD2851ACC51AEB4045A719F5C3F8E574"
+          }
+        },
+        {
+          "client_id": "130480101429-ki3aigs63e36a98hjcq87r04hrdeqi7b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDM6FXU833OXTJ1J9XZwM6E2QRmkAp_AfE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "130480101429-ki3aigs63e36a98hjcq87r04hrdeqi7b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
