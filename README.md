@@ -8,7 +8,8 @@ MCIoT module coursework
     - Add SDK
     - Connect with api key etc...
     - Determine how to get location
-- At regular interval poll location and push to Firebase
+- At regular interval poll location
+- Logger class (push locations to Firebase)
 - Define "interesting" locations
 - If within 3m of interesting location - do some action
     - Action TBD (toast, or notification or whatnot)
