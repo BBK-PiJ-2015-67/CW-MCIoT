@@ -13,7 +13,6 @@ import com.mignot.kumar.models.LocationEntry;
  * @see LocationLogger
  */
 public class FireBaseLocationLogger implements LocationLogger {
-  private static final String LOG_ROOT = "location-logs";
   private static FireBaseLocationLogger _instance = null;
   private static DatabaseReference dr = null;
 
@@ -35,12 +34,11 @@ public class FireBaseLocationLogger implements LocationLogger {
    * @see LocationLogger#log(LocationEntry)
    */
   @Override
-  public void log(@NonNull LocationEntry entry) {
-    // get a new key from FireBase for this entry
+  public String log(@NonNull LocationEntry entry) {
     String newId = dr.push().getKey();
-    // and log it
-    dr.child(LOG_ROOT)
-      .child(newId)
-      .setValue(entry);
+    dr.child(newId).setValue(entry);
+
+    return newId;
   }
+
 }

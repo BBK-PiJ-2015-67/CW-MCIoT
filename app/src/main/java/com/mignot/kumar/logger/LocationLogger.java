@@ -15,6 +15,7 @@ public interface LocationLogger {
    * tbd by the implementing class
    *
    * @param entry the LocationEntry object to be logged
+   * @return String some identifier associated with this entry
    */
-  void log(@NonNull LocationEntry entry);
+  String log(@NonNull LocationEntry entry);
 }
