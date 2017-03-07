@@ -26,14 +26,13 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.1.1'
     compile 'com.google.firebase:firebase-database:10.0.1'
-    testCompile 'junit:junit:4.12'
     compile 'com.indooratlas.android:indooratlas-android-sdk:2.3.1@aar'
+    compile 'com.github.Karumi:Dexter:3.0.2'
+    testCompile 'junit:junit:4.12'
 }
-repositories{
-    maven {
-        url "http://indooratlas-ltd.bintray.com/mvn-public"
-    }
+repositories {
+    maven { url "http://indooratlas-ltd.bintray.com/mvn-public" }
+    maven { url "https://jitpack.io" }
 }
-
 
 apply plugin: 'com.google.gms.google-services'
