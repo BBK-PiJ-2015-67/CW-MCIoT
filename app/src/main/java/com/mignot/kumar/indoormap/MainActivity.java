@@ -7,13 +7,13 @@ public class MainActivity extends SingleFragmentActivity {
 
   @Override
   protected Fragment createFragment() {
-    return new SimpleTrackingFragment();
+    return SimpleTrackingFragment.newInstance();
   }
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.fragment_container);
+    setContentView(R.layout.activity_fragment);
   }
 
 }

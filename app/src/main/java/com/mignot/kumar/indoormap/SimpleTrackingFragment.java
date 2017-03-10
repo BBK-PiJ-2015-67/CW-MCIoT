@@ -24,6 +24,8 @@ public class SimpleTrackingFragment extends Fragment {
     private LocationTracking mTracker;
     private TextView mCurrentLocation;
 
+    public static Fragment newInstance() { return new SimpleTrackingFragment(); }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
