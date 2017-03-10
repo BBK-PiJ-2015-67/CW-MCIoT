@@ -17,8 +17,6 @@ import com.mignot.kumar.tracker.LocationTracking;
 public class SimpleTrackingFragment extends Fragment {
     private static final String DB_REF = "location-logs";
 
-    private Button mStartButton;
-    private Button mStopButton;
     private LocationTracking mTracker;
 
     @Override
@@ -36,8 +34,8 @@ public class SimpleTrackingFragment extends Fragment {
         View v = inflater.inflate(R.layout.activity_fragment, container, false);
 
 
-        mStartButton = (Button)v.findViewById(R.id.start_loc_log);
-        mStopButton = (Button)v.findViewById(R.id.stop_loc_log);
+        Button mStartButton = (Button)v.findViewById(R.id.start_loc_log);
+        Button mStopButton = (Button)v.findViewById(R.id.stop_loc_log);
 
         mStartButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
