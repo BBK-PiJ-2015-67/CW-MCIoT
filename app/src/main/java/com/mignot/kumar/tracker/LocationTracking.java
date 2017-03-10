@@ -22,18 +22,19 @@ public class LocationTracking {
 
   private IALocationListener mLocationListener;
 
-  public LocationTracking (LocationLogger newLogger, IALocationManager newLocMan) {
+  public LocationTracking (LocationLogger newLogger, IALocationManager newLocMan, TrackerCallback cb) {
     mLocationLogger = newLogger;
     mLocationManager = newLocMan;
 
     mLocationListener = new IALocationListener() {
       @Override
       public void onLocationChanged(IALocation location) {
-        mLocationLogger.log(new LocationEntry (
+        LocationEntry entry = new LocationEntry (
             location.getLatitude(),
             location.getLongitude(),
-            Calendar.getInstance().toString())
-        );
+            Calendar.getInstance().toString());
+        mLocationLogger.log(entry);
+        cb.execute(entry.toString());
       }
       @Override
       public void onStatusChanged(String s, int i, Bundle bundle) {
@@ -48,8 +49,8 @@ public class LocationTracking {
   public void start() {
     mLocationManager.requestLocationUpdates(
         IALocationRequest
-        .create()
-        .setFastestInterval(LOG_INTERVAL),
+          .create()
+          .setFastestInterval(LOG_INTERVAL),
         mLocationListener
     );
   }

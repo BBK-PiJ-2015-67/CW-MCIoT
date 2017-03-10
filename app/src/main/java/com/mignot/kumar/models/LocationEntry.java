@@ -31,4 +31,9 @@ final public class LocationEntry {
   public String getTimestamp() {
     return timestamp;
   }
+
+  @Override
+  public String toString() {
+    return "Longitude: " + longitude + " Latitude: " + latitude + " Timestamp: " + timestamp;
+  }
 }
