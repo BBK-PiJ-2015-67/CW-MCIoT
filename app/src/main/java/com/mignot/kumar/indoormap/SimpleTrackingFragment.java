@@ -4,7 +4,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.view.LayoutInflater;
@@ -15,8 +14,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.indooratlas.android.sdk.IALocationManager;
 import com.mignot.kumar.logger.FireBaseLocationLogger;
 import com.mignot.kumar.tracker.LocationTracking;
-
-import org.w3c.dom.Text;
 
 public class SimpleTrackingFragment extends Fragment {
     private static final String DB_REF = "location-logs";
@@ -49,9 +46,18 @@ public class SimpleTrackingFragment extends Fragment {
         mStartButton.setBackgroundColor(Color.GREEN);
         Button mStopButton = (Button) v.findViewById(R.id.stop_loc_log);
         mStopButton.setBackgroundColor(Color.RED);
+        mStopButton.setEnabled(false);
 
-        mStartButton.setOnClickListener(l -> mTracker.start());
-        mStopButton.setOnClickListener(l -> mTracker.stop());
+        mStartButton.setOnClickListener(l -> {
+          mTracker.start();
+          mStartButton.setEnabled(false);
+          mStopButton.setEnabled(true);
+        });
+        mStopButton.setOnClickListener(l -> {
+          mTracker.stop();
+          mStopButton.setEnabled(false);
+          mStartButton.setEnabled(true);
+        });
         return v;
     }
 
