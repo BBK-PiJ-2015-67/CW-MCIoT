@@ -34,6 +34,6 @@ public class DistanceCalculatorTest {
 
   @Test(expected =  NullPointerException.class)
   public void it_should_throw_if_null_is_provided() {
-    assertEquals(EXPECTED, DistanceCalculator.getDistanceBetween(null, null, null, null));
+    DistanceCalculator.getDistanceBetween(null, null, null, null);
   }
 }
