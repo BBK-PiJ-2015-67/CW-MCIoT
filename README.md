@@ -1,15 +1,11 @@
 # CW-MCIoT
 MCIoT module coursework
 
-## Tasks
+## References
+1. Dexter for permission management [URL](https://github.com/Karumi/Dexter)
+2. TBD
 
-- Integrate with Firebase - DONE
-- Integrate with IndoorAtlas
-    - Add SDK
-    - Connect with api key etc...
-    - Determine how to get location
-- At regular interval poll location
-- Logger class (push locations to Firebase)
+## Tasks
 - Define "interesting" locations
 - If within 3m of interesting location - do some action
     - Action TBD (toast, or notification or whatnot)
