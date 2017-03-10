@@ -15,7 +15,8 @@ import java.util.Calendar;
  * Handle location tracking
  */
 public class LocationTracking {
-  private final long LOG_INTERVAL = 1000;
+  private final static long LOG_INTERVAL = 1000;
+
   private final LocationLogger mLocationLogger;
   private final IALocationManager mLocationManager;
 
