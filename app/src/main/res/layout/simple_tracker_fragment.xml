@@ -13,7 +13,7 @@
 
     <Button
         android:text="@string/start_loc_log"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="27dp"
         android:layout_marginTop="83dp"
@@ -21,10 +21,20 @@
 
     <Button
         android:text="@string/stop_loc_log"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/stop_loc_log"
         android:layout_below="@+id/start_loc_log"
         android:layout_alignStart="@+id/start_loc_log"
         android:layout_marginTop="25dp"/>
+
+    <TextView
+        android:text="@string/loc_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/current_loc"
+        android:layout_below="@+id/stop_loc_log"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="70dp"/>
+
 </RelativeLayout>
