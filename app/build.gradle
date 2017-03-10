@@ -17,6 +17,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -29,6 +32,7 @@ dependencies {
     compile 'com.indooratlas.android:indooratlas-android-sdk:2.3.1@aar'
     compile 'com.github.Karumi:Dexter:3.0.2'
     testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-core:2.7.15'
 }
 repositories {
     maven { url "http://indooratlas-ltd.bintray.com/mvn-public" }
