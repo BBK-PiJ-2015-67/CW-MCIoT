@@ -41,4 +41,13 @@ public class FireBaseLocationLogger implements LocationLogger {
     return newId;
   }
 
+  /**
+   * @see LocationLogger#onDestroy()
+   */
+  @Override
+  public void onDestroy() {
+    dr = null;
+    _instance = null;
+  }
+
 }

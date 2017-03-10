@@ -18,4 +18,9 @@ public interface LocationLogger {
    * @return String some identifier associated with this entry
    */
   String log(@NonNull LocationEntry entry);
+
+  /**
+   * Clean up any references if necessary
+   */
+  void onDestroy();
 }
