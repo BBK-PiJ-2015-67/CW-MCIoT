@@ -14,22 +14,9 @@ final public class LocationEntry {
   public LocationEntry(@NonNull Double lat,
                        @NonNull Double lon,
                        @NonNull String ts) {
-
     longitude = lon;
     latitude = lat;
     timestamp = ts;
-  }
-
-  public Double getLongitude() {
-    return longitude;
-  }
-
-  public Double getLatitude() {
-    return latitude;
-  }
-
-  public String getTimestamp() {
-    return timestamp;
   }
 
   @Override
