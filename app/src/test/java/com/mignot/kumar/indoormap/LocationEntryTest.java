@@ -18,7 +18,7 @@ public class LocationEntryTest {
   private static final Double LONG = -1.24545;
   private static final String TIMESTAMP = Calendar.getInstance().toString();
   private static final String EXPECTED_STRING =
-      "Longitude: " + LONG + " Latitude: " + LAT + " Timestamp: " + TIMESTAMP;
+      "Longitude: " + LONG + "\nLatitude: " + LAT + "\nTimestamp: " + TIMESTAMP;
 
   /**
    * Testing toString() method

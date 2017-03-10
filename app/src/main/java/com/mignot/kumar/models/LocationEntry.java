@@ -34,6 +34,8 @@ final public class LocationEntry implements Serializable {
 
   @Override
   public String toString() {
-    return "Longitude: " + longitude + " Latitude: " + latitude + " Timestamp: " + timestamp;
+    return "Longitude: " + longitude +
+        "\nLatitude: " + latitude +
+        "\nTimestamp: " + timestamp;
   }
 }
