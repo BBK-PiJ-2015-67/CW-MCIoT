@@ -32,7 +32,7 @@ public class LocationTracking {
         LocationEntry entry = new LocationEntry (
             location.getLatitude(),
             location.getLongitude(),
-            Calendar.getInstance().toString());
+            Calendar.getInstance().getTime().toString());
         mLocationLogger.log(entry);
         cb.execute(entry.toString());
       }

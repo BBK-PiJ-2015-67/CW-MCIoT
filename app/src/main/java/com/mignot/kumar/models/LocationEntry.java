@@ -1,12 +1,13 @@
 package com.mignot.kumar.models;
 
 import android.support.annotation.NonNull;
+import java.io.Serializable;
 
 /**
  * Simple model of a LocationEntry
  * Fulfils requirements that we log the retrieved location and a timestamp
  */
-final public class LocationEntry {
+final public class LocationEntry implements Serializable {
   private final Double longitude;
   private final Double latitude;
   private final String timestamp;
@@ -17,6 +18,18 @@ final public class LocationEntry {
     longitude = lon;
     latitude = lat;
     timestamp = ts;
+  }
+
+  public Double getLongitude() {
+    return longitude;
+  }
+
+  public Double getLatitude() {
+    return latitude;
+  }
+
+  public String getTimestamp() {
+    return timestamp;
   }
 
   @Override
