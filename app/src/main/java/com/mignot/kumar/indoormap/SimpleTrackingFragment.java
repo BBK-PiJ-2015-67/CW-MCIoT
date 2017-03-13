@@ -61,9 +61,9 @@ public class SimpleTrackingFragment extends Fragment {
   }
 
   @Override
-  public void onPause() {
-    if (mTracker.isTracking()) mTracker.stop();
-    super.onPause();
+  public void onStop() {
+    mTracker.stop();
+    super.onStop();
   }
 
   @Override
