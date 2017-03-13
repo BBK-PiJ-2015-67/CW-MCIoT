@@ -39,7 +39,7 @@ public class SimpleTrackingFragment extends Fragment {
         mTracker = new LocationTracking(
                 FireBaseLocationLogger.getInstance(FirebaseDatabase.getInstance().getReference(DB_REF)),
                 IALocationManager.create(super.getActivity()),
-                (s) -> mCurrentLocation.setText(s)
+                s -> mCurrentLocation.setText(s)
         );
 
         Button mStartButton = (Button) v.findViewById(R.id.start_loc_log);
@@ -59,6 +59,15 @@ public class SimpleTrackingFragment extends Fragment {
           mStartButton.setEnabled(true);
         });
         return v;
+    }
+
+    /**
+     * TODO: determine if this is a good idea
+     */
+    @Override
+    public void onPause() {
+        if (mTracker.isTracking()) mTracker.stop();
+        super.onPause();
     }
 
     @Override

@@ -19,6 +19,7 @@ public class LocationTracking {
 
   private final LocationLogger mLocationLogger;
   private final IALocationManager mLocationManager;
+  private boolean isTracking = false;
 
   private IALocationListener mLocationListener;
 
@@ -47,19 +48,25 @@ public class LocationTracking {
    * Start tracking locations and logging them
    */
   public void start() {
-    mLocationManager.requestLocationUpdates(
-        IALocationRequest
-          .create()
-          .setFastestInterval(LOG_INTERVAL),
-        mLocationListener
-    );
+    if (!isTracking) {
+      mLocationManager.requestLocationUpdates(
+          IALocationRequest
+              .create()
+              .setFastestInterval(LOG_INTERVAL),
+          mLocationListener
+      );
+      isTracking = true;
+    }
   }
 
   /**
    * Stop tracking locations
    */
   public void stop() {
-    mLocationManager.removeLocationUpdates(mLocationListener);
+    if (isTracking) {
+      mLocationManager.removeLocationUpdates(mLocationListener);
+      isTracking = false;
+    }
   }
 
   /**
@@ -69,5 +76,9 @@ public class LocationTracking {
     mLocationLogger.onDestroy();
     mLocationManager.destroy();
     mLocationListener = null;
+  }
+
+  public boolean isTracking () {
+    return isTracking;
   }
 }
