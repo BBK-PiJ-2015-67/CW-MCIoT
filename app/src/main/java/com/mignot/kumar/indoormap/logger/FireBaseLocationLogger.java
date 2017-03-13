@@ -16,6 +16,8 @@ public class FireBaseLocationLogger implements LocationLogger {
   private static FireBaseLocationLogger _instance = null;
   private static DatabaseReference dr = null;
 
+  private FireBaseLocationLogger() {}
+
   /**
    * Standard Singleton pattern "getInstance" method.
    *
@@ -27,8 +29,6 @@ public class FireBaseLocationLogger implements LocationLogger {
     if (_instance == null) _instance = new FireBaseLocationLogger();
     return _instance;
   }
-
-  private FireBaseLocationLogger() {}
 
   /**
    * @see LocationLogger#log(Location)

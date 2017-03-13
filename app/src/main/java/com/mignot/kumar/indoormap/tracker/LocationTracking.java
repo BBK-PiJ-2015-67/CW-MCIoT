@@ -24,7 +24,7 @@ public class LocationTracking {
 
   private boolean isTracking = false;
 
-  public LocationTracking (LocationLogger newLogger, IALocationManager newLocMan, TrackerCallback cb) {
+  public LocationTracking(LocationLogger newLogger, IALocationManager newLocMan, TrackerCallback cb) {
     mLocationLogger = newLogger;
     mLocationManager = newLocMan;
 
@@ -86,7 +86,7 @@ public class LocationTracking {
    * Check if location tracking is active
    * @return true or false if tracking is active
    */
-  public boolean isTracking () {
+  public boolean isTracking() {
     return isTracking;
   }
 }

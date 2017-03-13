@@ -10,10 +10,10 @@ public final class DistanceCalculator {
   private DistanceCalculator(){}
 
   @NonNull
-  public static Float getDistanceBetween (@NonNull Double latA,
-                                          @NonNull Double longA,
-                                          @NonNull Double latB,
-                                          @NonNull Double longB) {
+  public static Float getDistanceBetween(@NonNull Double latA,
+                                         @NonNull Double longA,
+                                         @NonNull Double latB,
+                                         @NonNull Double longB) {
     Location locA = new Location("Location A");
     Location locB = new Location("Location B");
     locA.setLatitude(latA);

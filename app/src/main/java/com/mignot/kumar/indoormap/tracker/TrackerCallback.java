@@ -9,5 +9,5 @@ public interface TrackerCallback {
    * Executes the callback with the given input
    * @param input Some input string
    */
-  void execute (String input);
+  void execute(String input);
 }
