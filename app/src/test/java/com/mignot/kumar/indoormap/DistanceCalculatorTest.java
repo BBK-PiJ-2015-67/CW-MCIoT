@@ -1,9 +1,7 @@
 package com.mignot.kumar.indoormap;
 
-import com.mignot.kumar.utils.DistanceCalculator;
-
+import com.mignot.kumar.indoormap.utils.DistanceCalculator;
 import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 
 /**

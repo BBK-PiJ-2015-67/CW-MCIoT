@@ -1,4 +1,4 @@
-package com.mignot.kumar.tracker;
+package com.mignot.kumar.indoormap.tracker;
 
 import android.os.Bundle;
 
@@ -6,13 +6,14 @@ import com.indooratlas.android.sdk.IALocation;
 import com.indooratlas.android.sdk.IALocationListener;
 import com.indooratlas.android.sdk.IALocationManager;
 import com.indooratlas.android.sdk.IALocationRequest;
-import com.mignot.kumar.logger.LocationLogger;
-import com.mignot.kumar.models.LocationEntry;
+import com.mignot.kumar.indoormap.logger.LocationLogger;
+import com.mignot.kumar.indoormap.models.Location;
+import com.mignot.kumar.indoormap.models.LoggableLocation;
 
 import java.util.Calendar;
 
 /**
- * Handle location tracking
+ * Handle location tracking and logging
  */
 public class LocationTracking {
   private final static long LOG_INTERVAL = 1000;
@@ -27,10 +28,14 @@ public class LocationTracking {
     mLocationLogger = newLogger;
     mLocationManager = newLocMan;
 
+    // listener to handle changes in current location
+    // when tracking is active
+    // logs location updates to firebase and executes the callback
+    // so the view can update with the current location
     mLocationListener = new IALocationListener() {
       @Override
       public void onLocationChanged(IALocation location) {
-        LocationEntry entry = new LocationEntry (
+        Location entry = new LoggableLocation(
             location.getLatitude(),
             location.getLongitude(),
             Calendar.getInstance().getTime().toString());
@@ -45,7 +50,7 @@ public class LocationTracking {
   }
 
   /**
-   * Start tracking locations and logging them
+   * Start tracking locations
    */
   public void start() {
     if (!isTracking) {
@@ -77,6 +82,10 @@ public class LocationTracking {
     mLocationManager.destroy();
   }
 
+  /**
+   * Check if location tracking is active
+   * @return true or false if tracking is active
+   */
   public boolean isTracking () {
     return isTracking;
   }

@@ -1,18 +1,15 @@
 package com.mignot.kumar.indoormap;
 
-import com.mignot.kumar.models.LocationEntry;
-import com.mignot.kumar.utils.DistanceCalculator;
-
-import org.junit.Test;
-
+import com.mignot.kumar.indoormap.models.Location;
+import com.mignot.kumar.indoormap.models.LoggableLocation;
 import java.util.Calendar;
-
+import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
- * LocationEntry tests
+ * LoggableLocation tests
  */
-public class LocationEntryTest {
+public class LoggableLocationTest {
 
   private static final Double LAT = 0.54676;
   private static final Double LONG = -1.24545;
@@ -25,7 +22,7 @@ public class LocationEntryTest {
    */
   @Test
   public void it_should_return_expected_string_if_toString_is_called() {
-    LocationEntry entry = new LocationEntry(LAT, LONG, TIMESTAMP);
+    Location entry = new LoggableLocation(LAT, LONG, TIMESTAMP);
     assertEquals(EXPECTED_STRING, entry.toString());
   }
 

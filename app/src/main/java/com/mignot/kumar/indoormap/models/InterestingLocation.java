@@ -1,8 +1,13 @@
-package com.mignot.kumar.models;
+package com.mignot.kumar.indoormap.models;
 
 import android.support.annotation.NonNull;
 
-public final class InterestingLocation implements LocationInfo {
+/**
+ * Model a location of interest.
+ * Satisfies requirement 2 - show a message if user
+ * is within 3m of the interesting location
+ */
+public final class InterestingLocation implements Location {
   private final Double longitude;
   private final Double latitude;
   private final String name;

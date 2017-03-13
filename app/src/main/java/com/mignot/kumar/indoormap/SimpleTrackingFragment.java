@@ -1,8 +1,8 @@
 package com.mignot.kumar.indoormap;
 
+import android.support.annotation.Nullable;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.Button;
@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.google.firebase.database.FirebaseDatabase;
 import com.indooratlas.android.sdk.IALocationManager;
-import com.mignot.kumar.logger.FireBaseLocationLogger;
-import com.mignot.kumar.tracker.LocationTracking;
+import com.mignot.kumar.indoormap.logger.FireBaseLocationLogger;
+import com.mignot.kumar.indoormap.tracker.LocationTracking;
 
 public class SimpleTrackingFragment extends Fragment {
   private static final String DB_REF = "location-logs";
@@ -60,7 +60,6 @@ public class SimpleTrackingFragment extends Fragment {
     return v;
   }
 
-  // TODO: determine if we want to pause tracking when onPause is called.
   @Override
   public void onPause() {
     if (mTracker.isTracking()) mTracker.stop();

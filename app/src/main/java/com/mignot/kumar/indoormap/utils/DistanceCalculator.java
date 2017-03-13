@@ -1,4 +1,4 @@
-package com.mignot.kumar.utils;
+package com.mignot.kumar.indoormap.utils;
 
 import android.location.Location;
 import android.support.annotation.NonNull;

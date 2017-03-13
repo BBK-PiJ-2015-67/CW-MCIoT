@@ -1,19 +1,19 @@
-package com.mignot.kumar.models;
+package com.mignot.kumar.indoormap.models;
 
 import android.support.annotation.NonNull;
 
 /**
- * Simple model of a LocationEntry
- * Fulfils requirements that we log the retrieved location and a timestamp
+ * Model a LoggableLocation for database logging
+ * Fulfil requirement 1 - log locations every 1 second to database
  */
-final public class LocationEntry implements LocationInfo {
+final public class LoggableLocation implements Location {
   private final Double longitude;
   private final Double latitude;
   private final String timestamp;
 
-  public LocationEntry(@NonNull Double lat,
-                       @NonNull Double lon,
-                       @NonNull String ts) {
+  public LoggableLocation(@NonNull Double lat,
+                          @NonNull Double lon,
+                          @NonNull String ts) {
     longitude = lon;
     latitude = lat;
     timestamp = ts;

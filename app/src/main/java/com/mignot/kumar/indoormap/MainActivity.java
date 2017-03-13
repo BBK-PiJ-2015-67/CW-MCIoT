@@ -2,6 +2,7 @@ package com.mignot.kumar.indoormap;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import com.mignot.kumar.indoormap.utils.SingleFragmentActivity;
 
 public class MainActivity extends SingleFragmentActivity {
 

@@ -1,4 +1,4 @@
-package com.mignot.kumar.tracker;
+package com.mignot.kumar.indoormap.tracker;
 
 /**
  * Simple interface to define a callback used by the tracker
