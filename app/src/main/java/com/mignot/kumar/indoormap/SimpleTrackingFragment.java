@@ -9,70 +9,67 @@ import android.widget.Button;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.google.firebase.database.FirebaseDatabase;
 import com.indooratlas.android.sdk.IALocationManager;
 import com.mignot.kumar.logger.FireBaseLocationLogger;
 import com.mignot.kumar.tracker.LocationTracking;
 
 public class SimpleTrackingFragment extends Fragment {
-    private static final String DB_REF = "location-logs";
+  private static final String DB_REF = "location-logs";
 
-    private LocationTracking mTracker;
-    private TextView mCurrentLocation;
+  private LocationTracking mTracker;
+  private TextView mCurrentLocation;
 
-    public static Fragment newInstance() { return new SimpleTrackingFragment(); }
+  public static Fragment newInstance() { return new SimpleTrackingFragment(); }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+  @Override
+  public void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+  }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater,
-                             ViewGroup container,
-                             Bundle savedInstanceState) {
+  @Override
+  public View onCreateView(LayoutInflater inflater,
+                           ViewGroup container,
+                           Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.simple_tracker_fragment, container, false);
+    View v = inflater.inflate(R.layout.simple_tracker_fragment, container, false);
 
-        mCurrentLocation = (TextView) v.findViewById(R.id.current_loc);
-        mTracker = new LocationTracking(
-                FireBaseLocationLogger.getInstance(FirebaseDatabase.getInstance().getReference(DB_REF)),
-                IALocationManager.create(super.getActivity()),
-                s -> mCurrentLocation.setText(s)
-        );
+    mCurrentLocation = (TextView) v.findViewById(R.id.current_loc);
+    mTracker = new LocationTracking(
+      FireBaseLocationLogger.getInstance(FirebaseDatabase.getInstance().getReference(DB_REF)),
+      IALocationManager.create(super.getActivity()),
+      s -> mCurrentLocation.setText(s)
+    );
 
-        Button mStartButton = (Button) v.findViewById(R.id.start_loc_log);
-        mStartButton.setBackgroundColor(Color.GREEN);
-        Button mStopButton = (Button) v.findViewById(R.id.stop_loc_log);
-        mStopButton.setBackgroundColor(Color.RED);
-        mStopButton.setEnabled(false);
+    Button mStartButton = (Button) v.findViewById(R.id.start_loc_log);
+    mStartButton.setBackgroundColor(Color.GREEN);
+    Button mStopButton = (Button) v.findViewById(R.id.stop_loc_log);
+    mStopButton.setBackgroundColor(Color.RED);
+    mStopButton.setEnabled(false);
 
-        mStartButton.setOnClickListener(l -> {
-          mTracker.start();
-          mStartButton.setEnabled(false);
-          mStopButton.setEnabled(true);
-        });
-        mStopButton.setOnClickListener(l -> {
-          mTracker.stop();
-          mStopButton.setEnabled(false);
-          mStartButton.setEnabled(true);
-        });
-        return v;
-    }
+    mStartButton.setOnClickListener(l -> {
+      mTracker.start();
+      mStartButton.setEnabled(false);
+      mStopButton.setEnabled(true);
+    });
+    mStopButton.setOnClickListener(l -> {
+      mTracker.stop();
+      mStopButton.setEnabled(false);
+      mStartButton.setEnabled(true);
+    });
+    return v;
+  }
 
-    /**
-     * TODO: determine if this is a good idea
-     */
-    @Override
-    public void onPause() {
-        if (mTracker.isTracking()) mTracker.stop();
-        super.onPause();
-    }
+  // TODO: determine if we want to pause tracking when onPause is called.
+  @Override
+  public void onPause() {
+    if (mTracker.isTracking()) mTracker.stop();
+    super.onPause();
+  }
 
-    @Override
-    public void onDestroy() {
-        mTracker.onDestroy();
-        super.onDestroy();
-    }
+  @Override
+  public void onDestroy() {
+    mTracker.onDestroy();
+    super.onDestroy();
+  }
 }

@@ -19,9 +19,9 @@ public class LocationTracking {
 
   private final LocationLogger mLocationLogger;
   private final IALocationManager mLocationManager;
-  private boolean isTracking = false;
+  private final IALocationListener mLocationListener;
 
-  private IALocationListener mLocationListener;
+  private boolean isTracking = false;
 
   public LocationTracking (LocationLogger newLogger, IALocationManager newLocMan, TrackerCallback cb) {
     mLocationLogger = newLogger;
@@ -50,10 +50,10 @@ public class LocationTracking {
   public void start() {
     if (!isTracking) {
       mLocationManager.requestLocationUpdates(
-          IALocationRequest
-              .create()
-              .setFastestInterval(LOG_INTERVAL),
-          mLocationListener
+        IALocationRequest
+          .create()
+          .setFastestInterval(LOG_INTERVAL),
+        mLocationListener
       );
       isTracking = true;
     }
@@ -75,7 +75,6 @@ public class LocationTracking {
   public void onDestroy() {
     mLocationLogger.onDestroy();
     mLocationManager.destroy();
-    mLocationListener = null;
   }
 
   public boolean isTracking () {
