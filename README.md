@@ -3,6 +3,7 @@ MCIoT module coursework
 
 ## References
 1. Dexter for permission management [URL](https://github.com/Karumi/Dexter)
+   - add licenses
 2. TBD
 
 ## Tasks

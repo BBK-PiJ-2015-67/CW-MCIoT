@@ -14,13 +14,14 @@ import com.indooratlas.android.sdk.IALocationManager;
 import com.mignot.kumar.indoormap.logger.FireBaseLocationLogger;
 import com.mignot.kumar.indoormap.tracker.LocationTracking;
 
-public class SimpleTrackingFragment extends Fragment {
+public class TrackingFragment extends Fragment {
+  private static final String TAG = "TrackingFragment";
   private static final String DB_REF = "location-logs";
 
   private LocationTracking mTracker;
   private TextView mCurrentLocation;
 
-  public static Fragment newInstance() { return new SimpleTrackingFragment(); }
+  public static Fragment newInstance() { return new TrackingFragment(); }
 
   @Override
   public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class SimpleTrackingFragment extends Fragment {
                            ViewGroup container,
                            Bundle savedInstanceState) {
 
-    View v = inflater.inflate(R.layout.simple_tracker_fragment, container, false);
+    View v = inflater.inflate(R.layout.tracking_fragment, container, false);
 
     mCurrentLocation = (TextView) v.findViewById(R.id.current_loc);
     mTracker = new LocationTracking(
@@ -61,9 +62,10 @@ public class SimpleTrackingFragment extends Fragment {
   }
 
   @Override
-  public void onStop() {
+  public void onPause() {
+    // TODO: save current tracking state (is it tracking or not) and resume in onResume()
     mTracker.stop();
-    super.onStop();
+    super.onPause();
   }
 
   @Override
