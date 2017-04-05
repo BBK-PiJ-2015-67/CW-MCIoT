@@ -22,6 +22,8 @@ import com.mignot.kumar.indoormap.utils.DistanceCalculator;
 public class TrackingFragment extends Fragment {
   private static final String TAG = "IndoorMapTracking";
   private static final String DB_REF = "location-logs";
+  private static final double SPECIAL_LAT = 51.52241142692823;
+  private static final double SPECIAL_LONG = -0.13065934289975817;
 
   private LocationTracking mTracker;
   private TextView currentLocation;
@@ -39,9 +41,10 @@ public class TrackingFragment extends Fragment {
                            Bundle savedInstanceState) {
 
     View v = inflater.inflate(R.layout.tracking_fragment, container, false);
+
     Location interestingLocation = new InterestingLocation(
-      51.52241142692823,
-      -0.13065934289975817,
+      SPECIAL_LAT,
+      SPECIAL_LONG,
       getString(R.string.interesting_location));
     currentLocation = (TextView) v.findViewById(R.id.current_loc);
 
@@ -53,22 +56,22 @@ public class TrackingFragment extends Fragment {
         currentLocation.setText(s.toString());
         Log.d(TAG, s.toString());
 
-//        // calculate the distance from the "interesting location"
-//        Float distance = DistanceCalculator.getDistanceBetween(
-//          s.getLatitude(),
-//          s.getLongitude(),
-//          interestingLocation.getLatitude(),
-//          interestingLocation.getLongitude()
-//        );
-//
-//        // show a message if within 3m
-//        if (distance <= 3) {
-//          String message = "You are " + distance + " from " +
-//            ((InterestingLocation) interestingLocation).getName();
-//          Toast
-//            .makeText(this.getContext(), message, Toast.LENGTH_SHORT)
-//            .show();
-//        }
+        // calculate the distance from the "interesting location"
+        Float distance = DistanceCalculator.getDistanceBetween(
+          s.getLatitude(),
+          s.getLongitude(),
+          interestingLocation.getLatitude(),
+          interestingLocation.getLongitude()
+        );
+
+        // show a message if within 3m
+        if (distance <= 3) {
+          String message = "You are " + distance + " from " +
+            ((InterestingLocation) interestingLocation).getName();
+          Toast
+            .makeText(this.getContext(), message, Toast.LENGTH_SHORT)
+            .show();
+        }
       }
     );
 

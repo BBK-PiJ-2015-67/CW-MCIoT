@@ -3,3 +3,6 @@
 -keepclassmembers class com.mignot.kumar.indoormap.models.** {
   *;
 }
+# Required by IndoorAtlas SDK
+-keep public class com.indooratlas.algorithm.ClientProcessingManager { *; }
+-dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
