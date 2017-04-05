@@ -19,8 +19,8 @@ public class LocationTracking {
   private final static long LOG_INTERVAL = 1000;
 
   private final LocationLogger mLocationLogger;
-  private final IALocationManager mLocationManager;
   private final IALocationListener mLocationListener;
+  private final IALocationManager mLocationManager;
 
   private boolean isTracking = false;
 
@@ -28,10 +28,6 @@ public class LocationTracking {
     mLocationLogger = newLogger;
     mLocationManager = newLocMan;
 
-    // listener to handle changes in current location
-    // when tracking is active
-    // logs location updates to firebase and executes the callback
-    // so the view can update with the current location
     mLocationListener = new IALocationListener() {
       @Override
       public void onLocationChanged(IALocation location) {
@@ -40,7 +36,7 @@ public class LocationTracking {
             location.getLongitude(),
             Calendar.getInstance().getTime().toString());
         mLocationLogger.log(entry);
-        cb.execute(entry.toString());
+        cb.execute(entry);
       }
       @Override
       public void onStatusChanged(String s, int i, Bundle bundle) {

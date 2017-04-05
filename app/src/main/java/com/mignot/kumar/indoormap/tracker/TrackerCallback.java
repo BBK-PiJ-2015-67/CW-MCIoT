@@ -1,13 +1,14 @@
 package com.mignot.kumar.indoormap.tracker;
 
+import com.mignot.kumar.indoormap.models.Location;
+
 /**
- * Simple interface to define a callback used by the tracker
+ * Defines a callback to operate on the provided Location
  */
 public interface TrackerCallback {
 
   /**
-   * Executes the callback with the given input
-   * @param input Some input string
+   * @param input the Location the callback receives as its parameter
    */
-  void execute(String input);
+  void execute (Location input);
 }

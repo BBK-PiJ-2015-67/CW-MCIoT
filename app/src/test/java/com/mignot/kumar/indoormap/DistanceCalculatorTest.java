@@ -5,8 +5,8 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Stupid test to run since we don't have a device running,
- * so android's Location just returns a default value of 0.0f
+ * Since we don't have a device running, Android's Location
+ * class just returns a default value of 0.0f
  */
 public class DistanceCalculatorTest {
   private static final Double LAT_A = 51.750839;

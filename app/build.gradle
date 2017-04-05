@@ -30,16 +30,15 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'com.android.support:appcompat-v7:25.1.1'
-    compile 'com.google.firebase:firebase-database:10.0.1'
-    compile 'com.indooratlas.android:indooratlas-android-sdk:2.3.1@aar'
-    compile 'com.github.Karumi:Dexter:3.0.2'
-    testCompile 'junit:junit:4.12'
-    testCompile 'org.mockito:mockito-core:2.7.15'
+  compile fileTree(include: ['*.jar'], dir: 'libs')
+  compile 'com.google.firebase:firebase-database:10.0.1'
+  compile 'com.indooratlas.android:indooratlas-android-sdk:2.3.1@aar'
+  compile 'com.github.Karumi:Dexter:3.0.2'
+  testCompile 'junit:junit:4.12'
+  androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    exclude group: 'com.android.support', module: 'support-annotations'
+  })
+  compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
 }
 repositories {
     maven { url "http://indooratlas-ltd.bintray.com/mvn-public" }

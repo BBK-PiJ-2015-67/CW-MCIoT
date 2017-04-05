@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 
 /**
  * Model a location of interest.
- * Satisfies requirement 2 - show a message if user
+ * Fulfil requirement 2 - show a message if user
  * is within 3m of the interesting location
  */
 public final class InterestingLocation implements Location {
