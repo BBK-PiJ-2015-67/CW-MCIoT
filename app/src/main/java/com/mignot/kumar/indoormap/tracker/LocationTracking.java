@@ -1,6 +1,7 @@
 package com.mignot.kumar.indoormap.tracker;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.indooratlas.android.sdk.IALocation;
 import com.indooratlas.android.sdk.IALocationListener;
@@ -16,7 +17,8 @@ import java.util.Calendar;
  * Handle location tracking and logging
  */
 public class LocationTracking {
-  private final static long LOG_INTERVAL = 1000;
+  private static final long LOG_INTERVAL = 1000;
+  private static final String TAG = "LocationTracker";
 
   private final LocationLogger mLocationLogger;
   private final IALocationListener mLocationListener;
@@ -57,6 +59,7 @@ public class LocationTracking {
         mLocationListener
       );
       isTracking = true;
+      Log.d(TAG, "location tracking started");
     }
   }
 
@@ -67,6 +70,7 @@ public class LocationTracking {
     if (isTracking) {
       mLocationManager.removeLocationUpdates(mLocationListener);
       isTracking = false;
+      Log.d(TAG, "location tracking stopped");
     }
   }
 

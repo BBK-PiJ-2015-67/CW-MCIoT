@@ -46,5 +46,7 @@ public class LocationTrackingTest {
     locationTracking.stop();
     assertFalse(locationTracking.isTracking());
   }
-  
+
+
+
 }

@@ -1,6 +1,5 @@
 package com.mignot.kumar.indoormap;
 
-import android.support.annotation.Nullable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -21,19 +20,18 @@ import com.mignot.kumar.indoormap.utils.DistanceCalculator;
 
 public class TrackingFragment extends Fragment {
   private static final String TAG = "IndoorMapTracking";
-  private static final String DB_REF = "location-logs";
+  private static final String DB_ROOT = "location-logs";
+  private static final String TRACKING_STATE_KEY = "trackerState";
+
   private static final double SPECIAL_LAT = 51.52241142692823;
   private static final double SPECIAL_LONG = -0.13065934289975817;
 
   private LocationTracking mTracker;
   private TextView currentLocation;
 
-  public static Fragment newInstance() { return new TrackingFragment(); }
+  private boolean trackerWasActive = false;
 
-  @Override
-  public void onCreate(@Nullable Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-  }
+  public static Fragment newInstance() { return new TrackingFragment(); }
 
   @Override
   public View onCreateView(LayoutInflater inflater,
@@ -49,7 +47,7 @@ public class TrackingFragment extends Fragment {
     currentLocation = (TextView) v.findViewById(R.id.current_loc);
 
     mTracker = new LocationTracking(
-      FireBaseLocationLogger.getInstance(FirebaseDatabase.getInstance().getReference(DB_REF)),
+      FireBaseLocationLogger.getInstance(FirebaseDatabase.getInstance().getReference(DB_ROOT)),
       IALocationManager.create(super.getActivity()),
       s -> {
         // display the coordinates
@@ -85,14 +83,8 @@ public class TrackingFragment extends Fragment {
   }
 
   @Override
-  public void onResume() {
-    super.onResume();
-
-  }
-
-  @Override
   public void onPause() {
-    // if (mTracker.isTracking())
+    trackerWasActive = mTracker.isTracking();
     mTracker.stop();
     super.onPause();
   }
@@ -101,6 +93,20 @@ public class TrackingFragment extends Fragment {
   public void onDestroy() {
     mTracker.onDestroy();
     super.onDestroy();
+  }
+
+  @Override
+  public void onSaveInstanceState(Bundle outState) {
+    super.onSaveInstanceState(outState);
+    outState.putBoolean(TRACKING_STATE_KEY, trackerWasActive);
+  }
+
+  @Override
+  public void onActivityCreated(Bundle savedInstanceState) {
+    super.onActivityCreated(savedInstanceState);
+    if (savedInstanceState != null && savedInstanceState.getBoolean(TRACKING_STATE_KEY)) {
+      mTracker.start();
+    }
   }
 
   /**
