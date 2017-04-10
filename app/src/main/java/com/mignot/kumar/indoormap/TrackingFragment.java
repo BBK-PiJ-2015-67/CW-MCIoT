@@ -85,6 +85,12 @@ public class TrackingFragment extends Fragment {
   }
 
   @Override
+  public void onResume() {
+    super.onResume();
+
+  }
+
+  @Override
   public void onPause() {
     // if (mTracker.isTracking())
     mTracker.stop();
